@@ -5,7 +5,7 @@ import numpy as np, pandas as pd
 from openpyxl.styles import Font, Alignment
 from openpyxl.utils import get_column_letter
 
-BASE = os.environ.get("URO_SDI_BASE", os.environ.get("URO_SDI_BASE", os.path.expanduser("~/uro_sdi_bench")))
+BASE = os.environ.get("URO_SDI_BASE", os.path.expanduser("~/uro_sdi_bench"))
 T = os.path.join(BASE, "results/tables")
 sys.path.insert(0, os.path.join(BASE, "scripts"))
 import marker_programs as mp
