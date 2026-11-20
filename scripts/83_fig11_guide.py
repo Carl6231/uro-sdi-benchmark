@@ -265,7 +265,7 @@ boxes = [
     (0.46, 0.53, 0.27, 0.44, "Below the line: compact", f"Use a spatial method,\ne.g. {', '.join(top_coarse)}", SEQ[1]),
     (0.46, 0.02, 0.27, 0.44, "Above the line: patchy or large", patchy, "#fde3cf"),
     (0.775, 0.2, 0.215, 0.66, "3  Check without labels",
-     "Marker-programme η² (held-\nout genes) vs GMM: a drop\nflags over-smoothing (Fig. 9).\nReport K and seed effects", "#f3f2ee")]
+     "Marker-programme η² (held-\nout genes) vs GMM: a drop\nflags over-smoothing (Fig. 6).\nReport K and seed effects", "#f3f2ee")]
 for x, y, wd, ht, hd, tx, fc in boxes:
     ax.add_patch(FancyBboxPatch((x, y), wd, ht, boxstyle="round,pad=0.004,rounding_size=0.02", fc=fc, ec=AXIS, lw=0.7))
     ax.text(x + 0.01, y + ht - 0.06, hd, fontsize=5.3, fontweight="bold", color=INK, va="top")

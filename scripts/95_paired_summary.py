@@ -1,4 +1,4 @@
-"""Summarise same-seed edge transitions and make supplementary Figure S2."""
+"""Summarise same-seed edge transitions (Tables S16-S18; plotted in Figure 4d-m by m4_fig4.py)."""
 import argparse
 from pathlib import Path
 
@@ -111,9 +111,8 @@ def figure(cohorts, folder):
     fig.text(.54, .105, "Share of eligible reference pairs (%)", ha="center", fontsize=10)
     fig.text(.04, .028, "DLPFC (12 sections, 3 donors), prostate (7 sections, 1 patient) and breast (20 sections).\n"
              "Each weight is compared with no smoothing on the same pairs and seeds.", fontsize=8, color="#43474a")
-    with matplotlib.rc_context({"pdf.fonttype": 42}):
-        fig.savefig(folder.parent / "AdditionalFile3_FigureS2.pdf")
-        fig.savefig(folder / "paired_changes.png", dpi=300)
+    # quick-look plot only; the published version of these bars is Figure 4d, e (scripts/m4_fig4.py)
+    fig.savefig(folder / "paired_changes.png", dpi=300)
     plt.close(fig)
 
 

@@ -68,7 +68,7 @@ for f, nm, tt in [("sim_summary.csv", "S10_simulation", "Table S10. Simulation: 
                   ("ext_ari.csv", "S12_breast", "Table S12. External breast-cancer sections: ARI, NMI and PAS per section and method (mean over seeds)"),
                   ("ext_rule_test.csv", "S13_breast_rule", "Table S13. Out-of-sample test of the class-level model on breast-cancer classes"),
                   ("marker_section_delta.csv", "S14_markers", "Table S14. Label-free check: change of marker-programme eta-squared per section"),
-                  ("guide_scorecard.csv", "S15_scorecard", "Table S15. Scorecard behind Figure 11a")]:
+                  ("guide_scorecard.csv", "S15_scorecard", "Table S15. Scorecard behind Figure 6k")]:
     d = rd(f)
     if d is not None:
         if nm == "S15_scorecard":

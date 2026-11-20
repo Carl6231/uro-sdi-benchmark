@@ -32,10 +32,11 @@ scripts/            analysis code (Python 3.10, R 4.5); numbered in the order th
   geom_utils.py       geometry of reference labels (boundary share, patches)
   marker_programs.py  marker-gene programmes used for the label-free analysis
   fig_common.py       figure style and helpers
+  mstyle.py           style of the six main figures (builds on fig_common.py)
 environment/        conda environment, R package installation, software versions
-results/tables/     per-section and per-method summaries; results/AdditionalFile1_tables.xlsx contains the supplementary tables
-                    and results/AdditionalFile2_FigureS1.pdf the external renal TLS figure
-figures/            Figures 1-11 (PNG and PDF)
+results/tables/     per-section and per-method summaries; results/AdditionalFile1_tables.xlsx holds Supplementary Tables
+                    S1-S18 and results/AdditionalFile2_SupplementaryFigures.pdf Supplementary Figures S1-S12 with legends
+figures/            main Figures 1-6 (PNG and PDF); figures/supplementary/ holds Supplementary Figures S1-S12
 jobs/               R job lists used for the supplementary runs and BANKSY parameter sweep
 run_all.sh          the complete analysis, step by step
 ```
@@ -73,33 +74,48 @@ export URO_SDI_BASE=/path/to/project      # default: ~/uro_sdi_bench
 bash run_all.sh
 ```
 
+Main figures (`figures/`):
+
 | Figure | Script | Content |
 |---|---|---|
-| 1 | `51_fig1_overview.py` | study design, data, methods, cost |
-| 2 | `52_fig2_accuracy.py` | accuracy on DLPFC and prostate cancer |
-| 3 | `53_fig3_transfer_maps.py` | does the DLPFC ranking transfer to tumours? domain maps |
-| 4 | `54_fig4_tls.py` | tertiary lymphoid structures in ccRCC |
-| 5 | `55_fig5_mechanism.py` | label grain explains the spatial gain |
-| 6 | `56_fig6_dose.py` | smoothing dose-response |
-| 7 | `81_fig7_simulation.py` | simulation with controlled grain |
-| 8 | `82_fig8_external.py` | external test in breast cancer |
-| 9 | `80_fig9_markers.py` | label-free check with marker-gene programmes |
-| 10 | `57_fig7_robustness.py` | robustness (K, seeds, parameters, leave-one-out) |
-| 11 | `83_fig11_guide.py` | scorecard and practical guide |
+| 1 | `m1_fig1.py` | study design; accuracy on DLPFC and prostate cancer; rankings do not transfer; domain maps |
+| 2 | `m2_fig2.py` | tertiary lymphoid structures in ccRCC: Meylan cohort and the independent Zurich sections |
+| 3 | `m3_fig3.py` | the grain of the reference labels explains the spatial gain; label smoothing; simulation |
+| 4 | `m4_fig4.py` | smoothing dose; neighbour-pair errors corrected and introduced by smoothing |
+| 5 | `m5_fig5.py` | external test in breast cancer |
+| 6 | `m6_fig6.py` | label-free check with marker-gene programmes; scorecard and decision guide |
 
-The November 20, 2026 server export includes [scores](results/), [supplementary tables](results/AdditionalFile1_tables.xlsx), and all [eleven rendered figures](figures/). All 18 GraphST runs on the six Wu 2021 sections have an `ok` score record (three seeds per section). The [Wu runner](scripts/70e_fix_wu_py.sh) starts a separate process for each section and method and retries unfinished GraphST seeds on CPU.
+Supplementary figures (`figures/supplementary/`, collected with legends in
+[Additional file 2](results/AdditionalFile2_SupplementaryFigures.pdf) by `96_supplementary_figures.py`):
 
-Figure 8 uses the 20 breast sections of the external test. Its smoothing-dose panels skip `GSE213688_GSM6592059` and `GSE213688_GSM6592061`, which [Table S2](results/tables/TableS2_sections.csv) excludes because fewer than two classes have 20 or more spots.
+| Figure | Script | Content |
+|---|---|---|
+| S1 | `51_fig1_overview.py` | study design, data, methods, cost |
+| S2 | `52_fig2_accuracy.py` | accuracy on DLPFC and prostate cancer, all metrics |
+| S3 | `53_fig3_transfer_maps.py` | rankings across tissues; domain maps of all 13 methods |
+| S4 | `54_fig4_tls.py` | tertiary lymphoid structures in the Meylan ccRCC sections |
+| S5 | `external_validation/zurich_tls_pilot.py` | TLS calls in the three Zurich ccRCC sections |
+| S6 | `55_fig5_mechanism.py` | label grain in detail |
+| S7 | `56_fig6_dose.py` | smoothing dose-response in detail |
+| S8 | `81_fig7_simulation.py` | simulation with controlled grain |
+| S9 | `82_fig8_external.py` | external test in breast cancer in detail |
+| S10 | `80_fig9_markers.py` | label-free check in detail |
+| S11 | `57_fig7_robustness.py` | robustness (K, seeds, parameters, leave-one-out) |
+| S12 | `83_fig11_guide.py` | scorecard and practical guide in detail |
+
+The November 20, 2026 server export includes [scores](results/), [supplementary tables](results/AdditionalFile1_tables.xlsx), the six [main figures](figures/) and the twelve [supplementary figures](figures/supplementary/). All 18 GraphST runs on the six Wu 2021 sections have an `ok` score record (three seeds per section). The [Wu runner](scripts/70e_fix_wu_py.sh) starts a separate process for each section and method and retries unfinished GraphST seeds on CPU.
+
+Figure 5 and Figure S9 use the 20 breast sections of the external test. Their smoothing-dose panels skip `GSE213688_GSM6592059` and `GSE213688_GSM6592061`, which [Table S2](results/tables/TableS2_sections.csv) excludes because fewer than two classes have 20 or more spots.
 
 ## What smoothing corrects and what it costs at a boundary
 
 For 39 labelled sections, we followed each pair of neighbouring spots from no smoothing to one-ring PCA-smooth at neighbour weights of 0.3 and 0.7. We compared the same random seed, counted each undirected pair once and used only pairs with reference labels at both ends. A within-label error splits two neighbours that share a reference label. A boundary error joins neighbours with different reference labels. For each pair type, the error rate after smoothing equals the initial rate minus the fraction corrected plus the fraction newly in error. Each rate uses the full set of eligible pairs of that type.
 
-In the seven sections from one prostatectomy, a weight of 0.3 corrected 6.70% of within-label pairs and introduced errors in 2.24%. At reference boundaries, smoothing corrected 3.30% of pairs and introduced errors in 17.45%. The split rate fell in all seven sections and the boundary merge rate rose in all seven. Each rate averages seeds within a section and sections within a donor. The DLPFC estimates give three donors equal weight. The breast estimates give 20 sections equal weight because the analysis lacks a verified patient key spanning the three breast sources. [Figure S2](results/AdditionalFile3_FigureS2.pdf) · [Tables S16 to S18](results/AdditionalFile1_tables.xlsx) · [Editable manuscript passage and legend](results/boundary/Manuscript_insert_Figure_S2.docx)
+In the seven sections from one prostatectomy, a weight of 0.3 corrected 6.70% of within-label pairs and introduced errors in 2.24%. At reference boundaries, smoothing corrected 3.30% of pairs and introduced errors in 17.45%. The split rate fell in all seven sections and the boundary merge rate rose in all seven. Each rate averages seeds within a section and sections within a donor. The DLPFC estimates give three donors equal weight. The breast estimates give 20 sections equal weight because the analysis lacks a verified patient key spanning the three breast sources. In the 12 DLPFC sections the same weight raised the donor-averaged ARI from 0.418 to 0.505 while the boundary merge rate rose by 13.81 percentage points, so a better whole-section score can coexist with lost boundaries. The prostate result shows consistency within one specimen; how often it holds across patients needs an independent annotated cohort. [Figure 4d-m](figures/Figure4.png) · [Tables S16 to S18](results/AdditionalFile1_tables.xlsx) · [earlier draft of the passage](results/boundary/Manuscript_insert_Figure_S2.docx) (superseded by the manuscript text and Figure 4)
 
 The [transition counts](results/boundary/paired_edges.csv) retain the original label pair, section, seed and weight, including pairs correct or incorrect at both weights. The [cohort](results/boundary/paired_cohorts.csv), [section](results/boundary/paired_sections.csv) and [prostate label-pair](results/boundary/prostate_label_pairs.csv) tables use rates between 0 and 1. The edge totals in the summaries count each physical pair once per section and comparison. Rates are averaged as described above. The [marginal error tables](results/boundary/) also contain the original 13-method comparison and the dose series.
 
-With a clone of the published result files, the following command rebuilds Figure S2 and its tables. On the original benchmark inputs, `run_all.sh` also reconstructs the spot assignments and checks the paired counts against the baseline and smoothed error totals for every section and seed.
+With a clone of the published result files, the following command rebuilds Tables S16 to S18 and a quick-look plot (`results/boundary/paired_changes.png`); `scripts/m4_fig4.py` draws the published panels. On the original benchmark inputs, `run_all.sh` also reconstructs the spot assignments and checks the paired counts against the baseline and smoothed error totals for every section and seed.
 
 ```bash
 python scripts/95_paired_summary.py results/boundary

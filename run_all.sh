@@ -74,12 +74,13 @@ $PY scripts/72_followup_tables.py
 $PY scripts/78_table_datasets.py
 
 # ---- 7. figures ------------------------------------------------------------------------------------------------------
+# Full multi-panel figures (results/figures_full); they become Supplementary Figures S1-S4 and S6-S12
 for s in 51_fig1_overview 52_fig2_accuracy 53_fig3_transfer_maps 54_fig4_tls 55_fig5_mechanism 56_fig6_dose \
          81_fig7_simulation 82_fig8_external 80_fig9_markers 57_fig7_robustness 83_fig11_guide; do
   $PY scripts/$s.py
 done
-# Supplementary Figure S2. The dose reconstruction supplies independent error totals
-# against which the same-edge transitions are reconciled for every section and seed.
+# Neighbour-pair errors corrected and introduced by smoothing (Figure 4d-m, Tables S16-S18). The dose reconstruction
+# supplies independent error totals against which the same-edge transitions are reconciled for every section and seed.
 boundary="$URO_SDI_BASE/results/boundary"
 $PY scripts/93_boundary_errors.py archive --out "$boundary/archive_edges.csv"
 $PY scripts/93_boundary_errors.py dose --out "$boundary/dose_edges.csv"
@@ -87,6 +88,10 @@ $PY scripts/93_boundary_errors.py paired --out "$boundary/paired_edges.csv"
 $PY scripts/94_boundary_summary.py "$boundary"
 $PY scripts/95_paired_summary.py "$boundary"
 $PY scripts/91_additional_file1.py                   # Additional file 1: all supplementary tables in one Excel workbook (needs openpyxl)
-# Additional file 2: Figure S1 from the external renal TLS pilot (run external_validation/zurich_tls_pilot.py first)
-$PY scripts/92_additional_file2.py external_validation/zurich_tls_maps.png "$URO_SDI_BASE/results/AdditionalFile2_FigureS1.pdf"
-echo "done: figures in $URO_SDI_BASE/results/figures_full, tables in $URO_SDI_BASE/results"
+# Main Figures 1-6 (results/figures_main; Figure 2k-q needs external_validation/zurich_tls_pilot.py first)
+for s in m1_fig1 m2_fig2 m3_fig3 m4_fig4 m5_fig5 m6_fig6; do
+  $PY scripts/$s.py
+done
+# Additional file 2: Supplementary Figures S1-S12 with legends in one PDF (S5 = the Zurich TLS maps)
+$PY scripts/96_supplementary_figures.py external_validation/zurich_tls_maps.png "$URO_SDI_BASE/results/AdditionalFile2_SupplementaryFigures.pdf"
+echo "done: main figures in $URO_SDI_BASE/results/figures_main, supplementary figures and tables in $URO_SDI_BASE/results"
