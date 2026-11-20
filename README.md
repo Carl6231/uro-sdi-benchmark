@@ -35,7 +35,7 @@ scripts/            analysis code (Python 3.10, R 4.5); numbered in the order th
 environment/        conda environment, R package installation, software versions
 results/tables/     per-section and per-method summaries; results/AdditionalFile1_tables.xlsx contains the supplementary tables
                     and results/AdditionalFile2_FigureS1.pdf the external renal TLS figure
-figures/            Figures 1-7 and 9-11 (PNG and PDF)
+figures/            Figures 1-11 (PNG and PDF)
 jobs/               R job lists used for the supplementary runs and BANKSY parameter sweep
 run_all.sh          the complete analysis, step by step
 ```
