@@ -1,12 +1,12 @@
 # 投稿材料（BMC Bioinformatics）/ Submission package
 
-这个文件夹里是投稿要用的文字材料。图和附加文件在仓库的其他文件夹里，下表写明了每个文件的位置。
+这个文件夹保存 2026-11-20 的正文和投稿信归档副本。作者信息已在投稿用的本地副本中填写。图和附加文件的位置见下表。
 
 ## 在另一台电脑上怎么拿到这些文件
 
-1. 用浏览器打开 https://github.com/Carl6231/uro-sdi-benchmark ，并登录你的 GitHub 账号（仓库目前是私有的，不登录看不到）。
+1. 用浏览器打开 https://github.com/Carl6231/uro-sdi-benchmark 即可读取公开代码、结果和图。
 2. 点绿色的 **Code** 按钮，再点 **Download ZIP**，下载后解压。
-3. 投稿时按下表把文件传到投稿系统里。
+3. 投稿使用已确认作者信息的正文与投稿信；六张主图和两个附加文件使用下表所列版本。
 
 | 投稿系统里的文件类型 | 用哪个文件 |
 |---|---|
@@ -18,12 +18,10 @@
 
 `submission/Manuscript.pdf` 只是方便阅读的副本，不需要上传。
 
-## 投稿前还要你自己填的地方
+## 归档副本与投稿副本
 
-- `Manuscript.docx` 第一页：作者姓名、单位、通讯作者邮箱（方括号里的占位文字）。
-- `Manuscript.docx` 的 Declarations 部分：Authors' contributions（作者分工）。
-- `CoverLetter.docx` 末尾：通讯作者署名、单位、邮箱；可选填推荐审稿人。
-- 把这个 GitHub 仓库设为公开，并在 Zenodo 存档拿到 DOI，替换 Availability of data and materials 里的 `[DOI to be added]`。
+- 仓库内两份 Word 保留原归档内容。本地投稿副本已填写作者姓名、单位、通讯作者邮箱、作者贡献及投稿信署名。
+- 2026-11-21 的本地投稿副本使用公开 GitHub 仓库链接作为代码及结果的访问地址。
 
 ## 说明
 
