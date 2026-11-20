@@ -86,9 +86,9 @@ bash run_all.sh
 | 10 | `57_fig7_robustness.py` | robustness (K, seeds, parameters, leave-one-out) |
 | 11 | `83_fig11_guide.py` | scorecard and practical guide |
 
-The November 20, 2026 server export includes [scores](results/), [supplementary tables](results/AdditionalFile1_tables.xlsx), and [ten rendered figures](figures/). All 18 GraphST runs on the six Wu 2021 sections have an `ok` score record (three seeds per section). The [Wu runner](scripts/70e_fix_wu_py.sh) starts a separate process for each section and method and retries unfinished GraphST seeds on CPU.
+The November 20, 2026 server export includes [scores](results/), [supplementary tables](results/AdditionalFile1_tables.xlsx), and all [eleven rendered figures](figures/). All 18 GraphST runs on the six Wu 2021 sections have an `ok` score record (three seeds per section). The [Wu runner](scripts/70e_fix_wu_py.sh) starts a separate process for each section and method and retries unfinished GraphST seeds on CPU.
 
-Figure 8 is pending. At panel k, [the plotting script](scripts/82_fig8_external.py) looks up `GSE213688_GSM6592059` and `GSE213688_GSM6592061` in the geometry table. Both occur in the [dose table](results/dose/ext_dose.csv). [Table S2](results/tables/TableS2_sections.csv) marks them as excluded because fewer than two classes have 20 or more spots, so the [geometry table](results/tables/ext_geometry_slide.csv) has no rows for them.
+Figure 8 uses the 20 breast sections of the external test. Its smoothing-dose panels skip `GSE213688_GSM6592059` and `GSE213688_GSM6592061`, which [Table S2](results/tables/TableS2_sections.csv) excludes because fewer than two classes have 20 or more spots.
 
 ## External renal TLS pilot and cohort checks
 

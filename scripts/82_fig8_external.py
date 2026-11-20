@@ -61,10 +61,10 @@ for j, (sid, lt) in enumerate(zip(pick, "abc")):
     for v in lab.dropna().unique():
         seen.setdefault(bcol(v), v)
     nm = bshort(sid)
-    ax.set_title(f"{lt}   {nm}: {B.loc[sid, 'boundary_frac']:.0%} boundary", loc="left", fontsize=6.2)
-legend_below(fig, map_axes, [Line2D([], [], marker="o", ls="", ms=4.5, mfc=c, mec=SURF, label=str(v)[:22]) for c, v in seen.items()]
+    ax.set_title(f"{lt}   {nm}: {B.loc[sid, 'boundary_frac']:.0%}", loc="left", fontsize=6.0)
+legend_below(fig, map_axes, [Line2D([], [], marker="o", ls="", ms=4.5, mfc=c, mec=SURF, label=str(v)[:40]) for c, v in seen.items()]
              + [Line2D([], [], marker="o", ls="", ms=4.5, mfc=UNLABELLED, mec=AXIS, mew=0.4, label="not scored")], gap=0.004, fs=5.0,
-             ncol=5)
+             ncol=4)
 
 # d: grain of the annotations in the three datasets
 ax = fig.add_subplot(gs[1, 0:3]); gridx(ax)
@@ -93,7 +93,6 @@ for ds in ["DLPFC", "prostate", "breast"]:
     ax.scatter(g["boundary_frac"], g["gain"], s=13 if ds == "breast" else 10, color=DCOL[ds], edgecolor=SURF, lw=0.4, zorder=3, label=DNAME[ds])
 rb = spearmanr(B["boundary_frac"], B["gain"]); ra = spearmanr(ALL["boundary_frac"], ALL["gain"])
 ax.set_xlabel("Boundary share of the labels"); ax.set_ylabel(f"ARI, spatial (mean of {len(SPM)}) − GMM")
-ax.legend(loc="lower left", fontsize=4.6, handletextpad=0.1)
 ax.set_title(f"f   Breast ρ = {rb[0]:.2f}; all ρ = {ra[0]:.2f}", loc="left")
 
 # g: difference from GMM per method (bootstrap over breast sections)
@@ -135,18 +134,22 @@ xx = np.linspace(0, 1, 50)
 for n, ls in [(100, ":"), (500, "-"), (2000, "--")]:
     ax.plot(xx, coef["Intercept"] + coef["boundary_frac"] * xx + coef["log10_n"] * np.log10(n), color=INK, lw=0.8, ls=ls,
             label=f"rule, {n} spots")
-ax.legend(loc="lower left", fontsize=4.5, handlelength=1.6)
+ax.legend(loc="upper right", fontsize=4.5, handlelength=1.6)
 ax.set_xlabel("Boundary share of the class"); ax.set_ylabel(f"ΔF1, spatial (mean) − GMM")
 ax.set_title("i   Classes vs the prior rule", loc="left")
 ax = fig.add_subplot(gs[3, 4:8]); ax.grid(color=GRID, lw=0.5); ax.set_axisbelow(True); zero(ax); zero(ax, "x")
 ax.scatter(RT["pred"], RT["gain9"], s=10, color=MAGENTA, edgecolor=SURF, lw=0.4, zorder=3)
 agree = (np.sign(RT["pred"]) == np.sign(RT["gain9"])).mean(); rr = spearmanr(RT["pred"], RT["gain9"])
 ax.set_xlabel("Predicted gain (DLPFC + prostate rule)"); ax.set_ylabel("Observed gain, breast")
-ax.set_title(f"j   Out of sample: ρ = {rr[0]:.2f}, sign {agree:.0%}", loc="left")
+from matplotlib.ticker import MaxNLocator
+ax.xaxis.set_major_locator(MaxNLocator(4))
+ax.text(0.03, 0.97, f"ρ = {rr[0]:.2f} (P = {rr[1]:.2g})\nsign correct {agree:.0%}, n = {len(RT)}", transform=ax.transAxes, ha="left",
+        va="top", fontsize=4.8, color=INK2, bbox=dict(fc=SURF, ec="none", pad=1.0), zorder=5)
+ax.set_title("j   Held-out breast classes", loc="left")
 
 # k, l: PCA-smooth dose in breast
 DE = pd.read_csv(os.path.join(bu.BASE, "results/dose/ext_dose.csv"))
-DE = DE[(DE["variant"] == "all") & DE["ari"].notna()]
+DE = DE[(DE["variant"] == "all") & DE["ari"].notna() & DE["slide"].isin(GS.index)]   # only the sections of the external test (Table S2)
 w = DE.groupby(["slide", "alpha"])["ari"].mean().unstack()
 dl = w.sub(w[0.0], axis=0)
 ax = fig.add_subplot(gs[3, 8:12]); gridy(ax); zero(ax)
@@ -156,7 +159,7 @@ bf = GS.loc[dl.index, "boundary_frac"]; nb_ = (bf - bf.min()) / (bf.max() - bf.m
 for s in dl.index:
     ax.plot(dl.columns, dl.loc[s].values, color=cmb(1 - nb_[s]), lw=0.8)
 ax.set_xlabel("Neighbour weight α (1 ring)"); ax.set_ylabel("ΔARI vs α = 0")
-ax.set_title("k   Smoothing dose (dark: smooth labels)", loc="left")
+ax.set_title("k   Smoothing dose", loc="left")
 
 # l: best alpha vs grain, all datasets
 ax = fig.add_subplot(gs[4, 0:3]); ax.grid(color=GRID, lw=0.5); ax.set_axisbelow(True)
