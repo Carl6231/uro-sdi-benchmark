@@ -66,13 +66,17 @@ ax = fig.add_subplot(gs[0, 4:8]); score_map(ax, KS, "Proximal tubule", "b   Same
 PS = next(s for s in bu.list_slides("Erickson") if s.endswith("H1_2"))
 ax = fig.add_subplot(gs[0, 8:12]); score_map(ax, PS, "Prostate tumour", "c   Prostate H1_2: tumour programme")
 from matplotlib.colors import LinearSegmentedColormap as _LSC
-cax = ax.inset_axes([0.72, -0.2, 0.28, 0.04])
+cax = ax.inset_axes([0.72, -0.36, 0.28, 0.04])
 cbm = fig.colorbar(plt.cm.ScalarMappable(cmap=_LSC.from_list("q", ["#f0efec"] + SEQ[3:]), norm=plt.Normalize(-1, 3)), cax=cax,
                    orientation="horizontal")
 cbm.outline.set_visible(False); cbm.ax.tick_params(labelsize=4.5); cbm.set_ticks([-1, 1, 3])
 cax.set_title("programme score (z)", fontsize=4.6, color=INK2, pad=2, loc="center")
 
 # d: delta eta2 vs GMM per method and programme (main runs)
+def TSHORT(t):
+    return TNAME[t].split(" (")[0].replace(" cancer", "")
+
+
 ax = fig.add_subplot(gs[1, 0:6])
 cols = [(t, p) for t in tissues for p in sorted(EM.xs(t, level="tissue").index.get_level_values("program").unique())]
 meths = [m for m in METHODS if m != "gmm" and m in EM]
@@ -86,7 +90,7 @@ ax.set_xticks(range(len(cols))); ax.set_xticklabels([PSHORT.get(p, p) for t, p i
 for i, t in enumerate(tissues):
     js = [j for j, (tt, _) in enumerate(cols) if tt == t]
     ax.plot([min(js) - 0.4, max(js) + 0.4], [-0.9, -0.9], color=TCOL[t], lw=2.0, clip_on=False, solid_capstyle="butt")
-    ax.text(np.mean(js), -1.4, TNAME[t].split(" (")[0], ha="center", va="bottom", fontsize=4.8, color=INK2, clip_on=False)
+    ax.text(np.mean(js), -1.4, TSHORT(t), ha="center", va="bottom", fontsize=4.8, color=INK2, clip_on=False)
     if i:
         ax.axvline(min(js) - 0.5, color=SURF, lw=1.2)
 for s_ in ax.spines.values(): s_.set_visible(False)
@@ -103,8 +107,8 @@ for i, t in enumerate(tissues):
     v = sec.loc[sec["tissue"] == t, "d"].values; y = len(tissues) - 1 - i
     ax.scatter(v, y + rng.uniform(-0.18, 0.18, len(v)), s=7, color=TCOL[t], alpha=0.6, lw=0)
     ax.plot([np.median(v)] * 2, [y - 0.3, y + 0.3], color=INK, lw=1.0)
-ax.set_yticks(range(len(tissues))); ax.set_yticklabels([TNAME[t] for t in tissues][::-1], fontsize=5.0)
-ax.set_xlabel("Δη², spatial (mean of 9) − GMM"); ax.set_title("e   Per section", loc="left")
+ax.set_yticks(range(len(tissues))); ax.set_yticklabels([TSHORT(t) for t in tissues][::-1], fontsize=5.0)
+ax.set_xlabel(f"Δη², spatial (mean of {len([m for m in SPM if m in EM])}) − GMM"); ax.set_title("e   Per section", loc="left")
 
 # f: per method, DLPFC vs all other tissues
 ax = fig.add_subplot(gs[1, 9:12]); gridx(ax); zero(ax, "x")
@@ -156,7 +160,7 @@ for t in tissues:
 lim = [w.min().min() - 0.02, w.max().max() + 0.02]
 ax.plot(lim, lim, color=MUTED, lw=0.6, ls=":"); ax.set_xlim(lim); ax.set_ylim(lim)
 r_ = spearmanr(w["all"], w["heldout"])
-ax.set_xlabel("Δη² at α = 1, all genes"); ax.set_ylabel("Δη² at α = 1, programme genes held out")
+ax.set_xlabel("Δη² at α = 1, all genes"); ax.set_ylabel("Δη² at α = 1, held-out genes")
 ax.set_title(f"j   Not circular (ρ = {r_[0]:.2f})", loc="left")
 
 # k: label-free vs label-based (sections with labels)

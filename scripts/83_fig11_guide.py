@@ -75,7 +75,8 @@ gs = GridSpec(5, 12, figure=fig, height_ratios=[1.0, 1.0, 1.3, 1.3, 1.15], hspac
 ax = fig.add_subplot(gs[0:2, 0:8])
 cols = list(C.columns) + ["GPU"]
 A = np.column_stack([Z.loc[order].values, np.full(len(order), np.nan)])
-heat(ax, A, SEQ[:11], 0, 1, text=False, xt=[c for c in cols], yt=[NAME[m] for m in order])
+HDR = {"Simulated\nfine grain": "Fine\ngrain", "Simulated\ncoarse grain": "Coarse\ngrain", "Marker η²\nvs GMM": "Marker\nΔη²"}
+heat(ax, A, SEQ[:11], 0, 1, text=False, xt=[HDR.get(c, c) for c in cols], yt=[NAME[m] for m in order])
 for i, m in enumerate(order):
     for j, c in enumerate(cols):
         if c == "GPU":
@@ -171,7 +172,8 @@ ax.set_xscale("log"); ax.set_xlim(20, 6000); ax.set_ylim(0, 1)
 ax.text(0.04, 0.05, "spatial methods help", transform=ax.transAxes, fontsize=5, color=SEQ[10], fontweight="bold")
 ax.text(0.96, 0.93, "GMM as good or better", transform=ax.transAxes, fontsize=5, color=INK2, ha="right", fontweight="bold")
 ax.set_xlabel("Class size (spots)"); ax.set_ylabel("Boundary share of the class")
-ax.text(0.97, 0.05, "●  gain > 0    ○  gain ≤ 0", transform=ax.transAxes, ha="right", fontsize=4.6, color=INK2)
+ax.text(0.96, 0.86, "●  gain > 0    ○  gain ≤ 0", transform=ax.transAxes, ha="right", fontsize=4.6, color=INK2,
+        bbox=dict(fc=SURF, ec="none", pad=0.8), zorder=6)
 ax.set_title("d   Break-even line (95% CI)", loc="left")
 BE = pd.DataFrame({"n_spots": [50, 100, 200, 500, 1000, 2000, 5000]})
 for q, nm in [(50, "break_even"), (2.5, "ci_lo"), (97.5, "ci_hi")]:
@@ -187,7 +189,8 @@ if T is not None:
 for i, (ds, g, oc, pc) in enumerate(bars):
     agree = float((np.sign(g[oc]) == np.sign(g[pc])).mean()); r_ = spearmanr(g[pc], g[oc])[0]
     ax.bar(i, agree * 100, color=DCOL[ds], width=0.62)
-    ax.text(i, agree * 100 + 2, f"{agree:.0%}\nρ {r_:.2f}\nn {len(g)}", ha="center", va="bottom", fontsize=4.6, color=INK2)
+    ax.text(i, agree * 100 + 2, f"{agree:.0%}\nρ {r_:.2f}\nn {len(g)}", ha="center", va="bottom", fontsize=4.6, color=INK2,
+            bbox=dict(fc=SURF, ec="none", pad=0.6), zorder=4)
 ax.axhline(50, color=MUTED, lw=0.7, ls="--")
 ax.set_xticks(range(len(bars))); ax.set_xticklabels([{"DLPFC": "DLPFC", "prostate": "Prostate", "breast": "Breast\n(held out)"}[d]
                                                      for d, *_ in bars], fontsize=5)
@@ -239,10 +242,14 @@ rt = C["Runtime\n(median)"]
 for m in ALLM:
     ax.scatter(rt[m], acc[m], s=20, color=COL[m], edgecolor=SURF, lw=0.6, zorder=3, marker="s" if gpu[m] else "o")
 ax.set_xscale("log")
-place_labels(ax, fig, rt[ALLM].values, acc[ALLM].values, [NAME[m] for m in ALLM], fs=4.6)
+ax.set_xlim(rt[ALLM].min() / 1.8, rt[ALLM].max() * 3.0); ax.set_ylim(acc[ALLM].min() - 0.07, acc[ALLM].max() + 0.07)
+leg = ax.legend(handles=[Line2D([], [], marker="o", ls="", ms=3.4, mfc=INK2, mec=SURF, label="CPU"),
+                         Line2D([], [], marker="s", ls="", ms=3.4, mfc=INK2, mec=SURF, label="GPU")], loc="upper right", fontsize=4.8)
+# a label must also keep clear of the marker discs, not only of their centres
+fig.canvas.draw()
+disc = [ax.scatter([x], [y], s=60, alpha=0) for x, y in zip(rt[ALLM].values, acc[ALLM].values)]
+place_labels(ax, fig, rt[ALLM].values, acc[ALLM].values, [NAME[m] for m in ALLM], fs=4.6, avoid=[leg] + disc)
 ax.set_xlabel("Median runtime per section (s, log scale)"); ax.set_ylabel("Mean scaled accuracy (a)")
-ax.legend(handles=[Line2D([], [], marker="o", ls="", ms=3.4, mfc=INK2, mec=SURF, label="CPU"),
-                   Line2D([], [], marker="s", ls="", ms=3.4, mfc=INK2, mec=SURF, label="GPU")], loc="upper right", fontsize=4.8)
 ax.set_title("g   Cost vs accuracy", loc="left")
 
 # ---------------- h: decision guide ----------------
@@ -253,12 +260,12 @@ b100, b500, b2000 = [float(BE.loc[BE["n_spots"] == n, "break_even"].iloc[0]) for
 a_p = best_alpha.get("≥ 0.4", 0.0)
 patchy = (f"Use GMM on PCs, or smooth\nlightly (α ≈ {a_p:g}, 1 ring)" if a_p > 0 else "Use GMM on PCs;\navoid neighbour smoothing")
 boxes = [
-    (0.0, 0.2, 0.17, 0.66, "1  Size up the target", "Typical domain size\n(spots) and boundary\nshare, from histology\nor prior work", "#f3f2ee"),
+    (0.006, 0.2, 0.164, 0.66, "1  Size up the target", "Typical domain size\n(spots) and boundary\nshare, from histology\nor prior work", "#f3f2ee"),
     (0.215, 0.2, 0.2, 0.66, "2  Locate it in d",
      f"Break-even boundary share\n≈ {b100:.2f} at 100 spots,\n{b500:.2f} at 500 spots,\n{b2000:.2f} at 2,000 spots", "#f3f2ee"),
     (0.46, 0.53, 0.27, 0.44, "Below the line: large, compact", f"Use a spatial method,\ne.g. {', '.join(top_coarse)}", SEQ[1]),
     (0.46, 0.02, 0.27, 0.44, "Above the line: small, patchy", patchy, "#fde3cf"),
-    (0.775, 0.2, 0.225, 0.66, "3  Check without labels",
+    (0.775, 0.2, 0.215, 0.66, "3  Check without labels",
      "Marker-programme η² (held-\nout genes) vs GMM: a drop\nflags over-smoothing (Fig. 9).\nReport K and seed effects", "#f3f2ee")]
 for x, y, wd, ht, hd, tx, fc in boxes:
     ax.add_patch(FancyBboxPatch((x, y), wd, ht, boxstyle="round,pad=0.004,rounding_size=0.02", fc=fc, ec=AXIS, lw=0.7))
