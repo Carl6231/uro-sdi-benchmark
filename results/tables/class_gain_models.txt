@@ -1,0 +1,14 @@
+gain9 ~ boundary_frac + log10_n   (random intercept per section)
+                Coef. Std.Err.       z  P>|z|  [0.025  0.975]
+Intercept       0.265    0.066   4.019  0.000   0.136   0.395
+boundary_frac  -0.129    0.038  -3.360  0.001  -0.204  -0.054
+log10_n        -0.077    0.021  -3.670  0.000  -0.118  -0.036
+Group Var       0.001    0.011                               
+
+gain9 ~ boundary_frac + log10_n + C(dataset)   (random intercept per section)
+                         Coef. Std.Err.       z  P>|z|  [0.025  0.975]
+Intercept                0.246    0.066   3.744  0.000   0.117   0.375
+C(dataset)[T.prostate]  -0.048    0.025  -1.893  0.058  -0.097   0.002
+boundary_frac           -0.095    0.041  -2.300  0.021  -0.176  -0.014
+log10_n                 -0.069    0.021  -3.257  0.001  -0.111  -0.028
+Group Var                0.001    0.010                               

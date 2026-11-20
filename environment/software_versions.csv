@@ -32,4 +32,4 @@ R,mclust,6.1.2
 R,scater,1.38.1
 R,scran,1.38.1
 hardware,GPU,"NVIDIA GeForce RTX 3080 (driver 595.112.07, 20480 MiB)"
-hardware,CPU cores,40
+hardware,CPU cores,4

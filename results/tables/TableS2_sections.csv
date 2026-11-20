@@ -1,0 +1,138 @@
+section,group,spots,genes,median_umi,k,scored_spots,classes,use
+GSE175540_GSM5924030,ccRCC,4510,17943,5120.0,2,4509,NO_TLS (4378); TLS (131),Labelled benchmark (TLS detection)
+GSE175540_GSM5924031,ccRCC,4755,17943,16459.0,2,4755,NO_TLS (4498); TLS (257),Labelled benchmark (TLS detection)
+GSE175540_GSM5924032,ccRCC,3829,17943,9719.0,2,3806,NO_TLS (3607); TLS (199),Labelled benchmark (TLS detection)
+GSE175540_GSM5924033,ccRCC,4975,17943,11474.0,2,4975,NO_TLS (4847); TLS (128),Labelled benchmark (TLS detection)
+GSE175540_GSM5924034,ccRCC,4860,17943,4101.5,,,,Labelled benchmark (TLS detection)
+GSE175540_GSM5924035,ccRCC,4948,17943,3554.0,2,4948,NO_TLS (4846); TLS (102),Labelled benchmark (TLS detection)
+GSE175540_GSM5924036,ccRCC,4915,17943,13010.0,,,,Labelled benchmark (TLS detection)
+GSE175540_GSM5924037,ccRCC,3585,17943,4576.0,2,3585,NO_TLS (3497); TLS (88),Labelled benchmark (TLS detection)
+GSE175540_GSM5924038,ccRCC,3206,17943,7685.0,2,3206,NO_TLS (2951); TLS (255),Labelled benchmark (TLS detection)
+GSE175540_GSM5924039,ccRCC,4940,17943,7161.5,,,,Labelled benchmark (TLS detection)
+GSE175540_GSM5924040,ccRCC,4562,17943,6476.0,2,4562,NO_TLS (4541); TLS (21),Labelled benchmark (TLS detection)
+GSE175540_GSM5924041,ccRCC,4359,17943,7971.0,2,4359,NO_TLS (4153); TLS (206),Labelled benchmark (TLS detection)
+GSE175540_GSM5924042,ccRCC,1451,36601,14407.0,,,,Labelled benchmark (TLS detection)
+GSE175540_GSM5924043,ccRCC,1439,36601,8954.0,2,1310,NO_TLS (1277); TLS (33),Labelled benchmark (TLS detection)
+GSE175540_GSM5924044,ccRCC,1983,36601,17087.0,2,1264,NO_TLS (1229); TLS (35),Labelled benchmark (TLS detection)
+GSE175540_GSM5924045,ccRCC,1696,36601,9725.5,,,,Labelled benchmark (TLS detection)
+GSE175540_GSM5924046,ccRCC,1949,36601,17882.0,2,1949,NO_TLS (1796); TLS (153),Labelled benchmark (TLS detection)
+GSE175540_GSM5924047,ccRCC,2374,36601,13925.5,,,,Labelled benchmark (TLS detection)
+GSE175540_GSM5924048,ccRCC,1678,36601,9719.5,,,,Labelled benchmark (TLS detection)
+GSE175540_GSM5924049,ccRCC,1186,36601,44195.5,,,,Labelled benchmark (TLS detection)
+GSE175540_GSM5924050,ccRCC,1349,36601,1336.0,2,1349,NO_TLS (1154); TLS (195),Labelled benchmark (TLS detection)
+GSE175540_GSM5924051,ccRCC,2007,36601,3762.0,2,2007,NO_TLS (1803); TLS (204),Labelled benchmark (TLS detection)
+GSE175540_GSM5924052,ccRCC,2580,36601,3328.5,2,2580,NO_TLS (2426); TLS (154),Labelled benchmark (TLS detection)
+GSE175540_GSM5924053,ccRCC,1084,36601,4933.0,2,1084,NO_TLS (1015); TLS (69),Labelled benchmark (TLS detection)
+GSE183456_GSM6047774,Kidney (KPMP atlas),3007,33538,8349.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047775,Kidney (KPMP atlas),3627,36601,2308.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047776,Kidney (KPMP atlas),4166,36601,3268.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047777,Kidney (KPMP atlas),2627,36601,4001.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047778,Kidney (KPMP atlas),956,36601,3553.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047779,Kidney (KPMP atlas),1034,36601,4198.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047780,Kidney (KPMP atlas),1322,36601,2380.5,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047781,Kidney (KPMP atlas),673,36601,2132.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047782,Kidney (KPMP atlas),673,36601,5841.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047783,Kidney (KPMP atlas),560,36601,4992.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047784,Kidney (KPMP atlas),534,36601,5884.5,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047785,Kidney (KPMP atlas),453,36601,5576.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047786,Kidney (KPMP atlas),461,36601,6550.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047787,Kidney (KPMP atlas),904,36601,4233.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047788,Kidney (KPMP atlas),601,36601,6689.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047789,Kidney (KPMP atlas),787,36601,6876.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047790,Kidney (KPMP atlas),407,36601,9117.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047791,Kidney (KPMP atlas),317,36601,7415.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047792,Kidney (KPMP atlas),645,36601,7637.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047793,Kidney (KPMP atlas),673,36601,8569.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047794,Kidney (KPMP atlas),640,36601,6533.5,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047795,Kidney (KPMP atlas),507,36601,11360.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE183456_GSM6047796,Kidney (KPMP atlas),370,36601,11169.5,,,,"Unlabelled: label-free marker analysis, dose"
+GSE206306_GSM6250307,Kidney papilla,2438,36601,3649.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE206306_GSM6250308,Kidney papilla,817,36601,9555.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE206306_GSM6250309,Kidney papilla,939,36601,5173.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE206306_GSM6250310,Kidney papilla,1085,36601,5078.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE206306_GSM7166170,Kidney papilla,2468,36601,5139.5,,,,"Unlabelled: label-free marker analysis, dose"
+GSE226533_GSM7078497,Kidney (AKI),4237,36601,759.0,,,,"Unlabelled: label-free marker analysis, dose"
+GSE226533_GSM7078498,Kidney (AKI),4059,36601,3904.0,,,,"Unlabelled: label-free marker analysis, dose"
+Human_Brain_Maynard_02082021_Visium_151507,DLPFC,4226,33538,2463.5,7,4221,L3 (1215); L1 (817); L5 (675); L6 (486); L4 (369); WM (354); L2 (305),Labelled benchmark (laminar reference)
+Human_Brain_Maynard_02082021_Visium_151508,DLPFC,4384,33538,2019.0,7,4381,L3 (1385); L1 (866); L5 (737); L6 (525); L4 (373); L2 (295); WM (200),Labelled benchmark (laminar reference)
+Human_Brain_Maynard_02082021_Visium_151509,DLPFC,4789,33538,2416.0,7,4788,L3 (1884); L1 (1189); L2 (602); L4 (369); L5 (363); L6 (215); WM (166),Labelled benchmark (laminar reference)
+Human_Brain_Maynard_02082021_Visium_151510,DLPFC,4634,33538,2319.0,7,4595,L3 (1774); L1 (1180); L2 (650); L4 (318); L5 (310); WM (184); L6 (179),Labelled benchmark (laminar reference)
+Human_Brain_Maynard_02082021_Visium_151669,DLPFC,3661,33538,3470.0,5,3636,L3 (2141); L5 (510); L6 (391); L4 (364); WM (230),Labelled benchmark (laminar reference)
+Human_Brain_Maynard_02082021_Visium_151670,DLPFC,3498,33538,3113.0,5,3484,L3 (2175); L5 (581); L6 (308); L4 (211); WM (209),Labelled benchmark (laminar reference)
+Human_Brain_Maynard_02082021_Visium_151671,DLPFC,4110,33538,3743.0,5,4093,L3 (1918); L6 (760); L5 (721); WM (449); L4 (245),Labelled benchmark (laminar reference)
+Human_Brain_Maynard_02082021_Visium_151672,DLPFC,4015,33538,3482.0,5,3888,L3 (1575); L6 (882); L5 (728); WM (399); L4 (304),Labelled benchmark (laminar reference)
+Human_Brain_Maynard_02082021_Visium_151673,DLPFC,3639,33538,4120.0,7,3611,L3 (989); L6 (692); L5 (673); WM (513); L1 (273); L2 (253); L4 (218),Labelled benchmark (laminar reference)
+Human_Brain_Maynard_02082021_Visium_151674,DLPFC,3673,33538,5334.0,7,3635,L3 (924); WM (625); L5 (621); L6 (614); L1 (380); L4 (247); L2 (224),Labelled benchmark (laminar reference)
+Human_Brain_Maynard_02082021_Visium_151675,DLPFC,3592,33538,3139.5,7,3566,L3 (771); L5 (732); WM (652); L6 (533); L1 (328); L2 (275); L4 (275),Labelled benchmark (laminar reference)
+Human_Brain_Maynard_02082021_Visium_151676,DLPFC,3460,33538,3419.0,7,3431,L3 (836); L5 (649); L6 (616); WM (533); L1 (289); L2 (254); L4 (254),Labelled benchmark (laminar reference)
+Human_Kidney_10X_02132023_Visium,Kidney (10x),5936,18085,11548.0,,,,"Unlabelled: label-free marker analysis, dose"
+Human_Prostate_10X_06092021_Visium_cancer,Prostate (10x),4371,17943,10704.0,,,,"Unlabelled: label-free marker analysis, dose"
+Human_Prostate_10X_06092021_Visium_normal,Prostate (10x),2543,17943,4446.0,,,,"Unlabelled: label-free marker analysis, dose"
+Human_Prostate_10X_07122022_Visium,Prostate (10x),3460,17943,9586.5,,,,"Unlabelled: label-free marker analysis, dose"
+Human_Prostate_10X_10082021_Visium,Prostate (10x),3043,17943,16648.0,,,,"Unlabelled: label-free marker analysis, dose"
+Human_Prostate_Erickson_08102022_Visium_Patient_1_H1_2,Prostate cancer,2756,33538,8253.5,3,2379,Stroma (1094); Benign (942); GG1 (334); Vessel (9),Labelled benchmark
+Human_Prostate_Erickson_08102022_Visium_Patient_1_H1_4,Prostate cancer,4051,33538,2282.0,4,3700,Stroma (1674); GG2 (937); Benign (705); GG4 Cribriform (376); Chronic inflammation (8),Labelled benchmark
+Human_Prostate_Erickson_08102022_Visium_Patient_1_H1_5,Prostate cancer,3800,33538,1355.0,3,3723,GG4 Cribriform (3030); Stroma (647); Fat (37); Vessel (8); Nerve (1),Labelled benchmark
+Human_Prostate_Erickson_08102022_Visium_Patient_1_H2_1,Prostate cancer,3031,33538,2977.0,7,2868,Stroma (1139); Benign (1079); GG2 (458); Fat (100); Nerve (32); GG4 (30); PIN (30),Labelled benchmark
+Human_Prostate_Erickson_08102022_Visium_Patient_1_H2_2,Prostate cancer,3170,33538,5254.5,3,2852,Stroma (1717); Benign (1094); GG2 (21); Inflammation (14); PIN (6),Labelled benchmark
+Human_Prostate_Erickson_08102022_Visium_Patient_1_H2_5,Prostate cancer,3521,33538,8663.0,4,3290,GG4 Cribriform (1169); Benign (1079); Stroma (925); Transition_State (117),Labelled benchmark
+Human_Prostate_Erickson_08102022_Visium_Patient_1_V1_2,Prostate cancer,2724,33538,7039.5,3,2486,Stroma (1427); Benign (778); Benign* (265); Chronic inflammation (16),Labelled benchmark
+GSE213688_GSM6592049,Breast cancer (TNBC),1848,36601,5083.0,4,1630,Tumor stroma with inflammation (853); Tumor cells (312); Adipose tissue (259); Tumor stroma fibrous (206),External validation
+GSE213688_GSM6592050,Breast cancer (TNBC),2417,36601,5634.0,2,1800,Tumor Cells (1083); Tumor Stroma (717),External validation
+GSE213688_GSM6592051,Breast cancer (TNBC),1564,36601,5548.5,4,716,Fibrosis (321); Tumor cells (177); Adipose tissue (159); Tumor Stroma (59),External validation
+GSE213688_GSM6592052,Breast cancer (TNBC),2104,36601,3972.5,3,1684,Tumour Cells (639); High TILs Stroma (529); Fibrosis (516),External validation
+GSE213688_GSM6592053,Breast cancer (TNBC),1731,36601,21851.0,2,1193,Tumor cells (942); Tumor stroma with inflammation (251),External validation
+GSE213688_GSM6592054,Breast cancer (TNBC),1596,36601,2369.0,6,1390,Fibrosis (807); Adipose tissue (242); Lymphocytes (156); Normal Epithelium (133); Vascular (28); Peripheral Nerve (24),External validation
+GSE213688_GSM6592055,Breast cancer (TNBC),1055,36601,4950.0,4,763,Lymphoid stroma (378); In situ Carcinoma* (220); Fibrous stroma (135); Adipose tissue (30),External validation
+GSE213688_GSM6592056,Breast cancer (TNBC),1258,36601,1205.0,4,1064,Fibrosis (729); Adipose tissue (221); Normal Epithelium (87); Lymphocytes (27),External validation
+GSE213688_GSM6592057,Breast cancer (TNBC),370,36601,2616.5,2,167,Fibrosis (131); Normal Epithelium (36),External validation
+GSE213688_GSM6592058,Breast cancer (TNBC),1405,36601,7446.0,3,1118,Fibrosis (619); Lymphocytes (344); In Situ Carcinoma (129); Normal Epithelium (15); Hyperplasia (11),External validation
+GSE213688_GSM6592059,Breast cancer (TNBC),2657,36601,15124.0,,,,Excluded (fewer than 2 classes with >= 20 spots)
+GSE213688_GSM6592060,Breast cancer (TNBC),1295,36601,11126.0,3,841,Tumour cells (564); Fibrosis (peritumoral) (205); Tumour Stroma (68); Endothelial (4),External validation
+GSE213688_GSM6592061,Breast cancer (TNBC),3037,36601,19634.0,,,,Excluded (fewer than 2 classes with >= 20 spots)
+GSE213688_GSM6592062,Breast cancer (TNBC),2700,36601,13165.5,3,1742,Tumour cells (1492); Tumour Stroma (146); Necrosis (98); Endothelial (6),External validation
+Human_Breast_10X_06092021_Visium,Breast cancer (10x),2518,17943,11727.0,2,2518,Non Tumor (1843); Tumor (675),External validation
+Human_Breast_10X_06232020_Visium_Block_A_Section_1,Breast cancer (10x),3798,36601,20761.5,4,3798,Invasive (1663); Tumor (827); Surrounding tumor (823); Healthy (485),External validation
+Human_Breast_10X_06232020_Visium_Block_A_Section_2,Breast cancer (10x),3987,36601,18828.0,,,,Excluded (fewer than 2 classes with >= 20 spots)
+WU2021_1142243F,Breast cancer (Wu),4784,28402,5495.0,3,4665,Invasive cancer + stroma + lymphocytes (3627); Necrosis (568); Stroma (445); Lymphocytes (15); TLS (10),External validation
+WU2021_1160920F,Breast cancer (Wu),4895,28402,11220.0,5,4846,Invasive cancer + stroma + lymphocytes (3146); Stroma (1132); Normal glands + lymphocytes (278); Lymphocytes (186); Adipose tissue (83); DCIS (12); Cancer trapped in lymphocyte aggregation (9),External validation
+WU2021_CID4290,Breast cancer (Wu),2432,19237,7849.0,3,2419,Invasive cancer + stroma (2082); Invasive cancer + stroma + lymphocytes (215); Stroma (122),External validation
+WU2021_CID4465,Breast cancer (Wu),1211,19237,11306.0,2,1207,Invasive cancer + stroma + lymphocytes (1131); Stroma (73); Normal duct (3),External validation
+WU2021_CID44971,Breast cancer (Wu),1162,19237,10113.5,6,1159,Invasive cancer + lymphocytes (317); DCIS (273); Normal + stroma + lymphocytes (240); Stroma (134); Stroma + adipose tissue (114); Lymphocytes (81),External validation
+WU2021_CID4535,Breast cancer (Wu),1127,19237,12836.0,4,1028,Invasive cancer (418); Invasive cancer + lymphocytes (361); Stroma (169); Lymphocytes (69); Adipose tissue (8); Invasive cancer + adipose tissue + lymphocytes (3),External validation
+SIM_dlpfc_l06_r1,Simulation,3000,33538,2776.5,5,3000,L3 (624); L5 (620); WM (617); L1 (601); L6 (538),Controlled spatial grain
+SIM_dlpfc_l06_r2,Simulation,3000,33538,2745.5,5,3000,WM (657); L6 (615); L5 (596); L3 (580); L1 (552),Controlled spatial grain
+SIM_dlpfc_l06_r3,Simulation,3000,33538,2747.0,5,3000,L3 (654); L6 (600); WM (599); L5 (585); L1 (562),Controlled spatial grain
+SIM_dlpfc_l10_r1,Simulation,3000,33538,2841.5,5,3000,L6 (631); L5 (620); WM (607); L1 (575); L3 (567),Controlled spatial grain
+SIM_dlpfc_l10_r2,Simulation,3000,33538,2636.0,5,3000,L1 (672); WM (665); L6 (585); L5 (572); L3 (506),Controlled spatial grain
+SIM_dlpfc_l10_r3,Simulation,3000,33538,2745.5,5,3000,L6 (705); L1 (646); L3 (594); L5 (536); WM (519),Controlled spatial grain
+SIM_dlpfc_l16_r1,Simulation,3000,33538,2723.5,5,3000,L5 (658); L6 (640); L1 (587); L3 (564); WM (551),Controlled spatial grain
+SIM_dlpfc_l16_r2,Simulation,3000,33538,2818.0,5,3000,WM (637); L5 (633); L6 (614); L1 (608); L3 (508),Controlled spatial grain
+SIM_dlpfc_l16_r3,Simulation,3000,33538,2727.5,5,3000,L1 (651); L3 (648); L5 (602); L6 (571); WM (528),Controlled spatial grain
+SIM_dlpfc_l25_r1,Simulation,3000,33538,2818.0,5,3000,L6 (803); L5 (705); L1 (642); L3 (445); WM (405),Controlled spatial grain
+SIM_dlpfc_l25_r2,Simulation,3000,33538,2734.0,5,3000,L3 (771); L1 (617); L6 (602); WM (591); L5 (419),Controlled spatial grain
+SIM_dlpfc_l25_r3,Simulation,3000,33538,2717.5,5,3000,L1 (716); L6 (698); L3 (655); L5 (528); WM (403),Controlled spatial grain
+SIM_dlpfc_l40_r1,Simulation,3000,33538,2782.0,5,3000,L6 (730); L3 (649); WM (578); L1 (525); L5 (518),Controlled spatial grain
+SIM_dlpfc_l40_r2,Simulation,3000,33538,2558.5,5,3000,WM (770); L1 (707); L6 (682); L5 (490); L3 (351),Controlled spatial grain
+SIM_dlpfc_l40_r3,Simulation,3000,33538,2526.0,5,3000,L6 (993); L1 (816); WM (492); L3 (454); L5 (245),Controlled spatial grain
+SIM_dlpfc_l65_r1,Simulation,3000,33538,2783.0,5,3000,WM (715); L5 (645); L3 (616); L6 (519); L1 (505),Controlled spatial grain
+SIM_dlpfc_l65_r2,Simulation,3000,33538,3366.5,5,3000,L5 (1227); L3 (776); L6 (463); L1 (297); WM (237),Controlled spatial grain
+SIM_dlpfc_l65_r3,Simulation,3000,33538,2946.0,5,3000,L6 (906); L3 (763); L1 (490); L5 (489); WM (352),Controlled spatial grain
+SIM_prostate_l06_r1,Simulation,3000,33538,4292.5,3,3000,Benign (1078); Tumour (966); Stroma (956),Controlled spatial grain
+SIM_prostate_l06_r2,Simulation,3000,33538,3763.5,3,3000,Tumour (1036); Benign (988); Stroma (976),Controlled spatial grain
+SIM_prostate_l06_r3,Simulation,3000,33538,4269.5,3,3000,Benign (1040); Stroma (1019); Tumour (941),Controlled spatial grain
+SIM_prostate_l10_r1,Simulation,3000,33538,3673.0,3,3000,Stroma (1122); Tumour (987); Benign (891),Controlled spatial grain
+SIM_prostate_l10_r2,Simulation,3000,33538,3883.5,3,3000,Stroma (1089); Tumour (980); Benign (931),Controlled spatial grain
+SIM_prostate_l10_r3,Simulation,3000,33538,4008.0,3,3000,Benign (1038); Tumour (1032); Stroma (930),Controlled spatial grain
+SIM_prostate_l16_r1,Simulation,3000,33538,4465.0,3,3000,Benign (1207); Stroma (897); Tumour (896),Controlled spatial grain
+SIM_prostate_l16_r2,Simulation,3000,33538,3935.5,3,3000,Tumour (1152); Stroma (928); Benign (920),Controlled spatial grain
+SIM_prostate_l16_r3,Simulation,3000,33538,4040.0,3,3000,Stroma (1053); Benign (1002); Tumour (945),Controlled spatial grain
+SIM_prostate_l25_r1,Simulation,3000,33538,3908.5,3,3000,Tumour (1176); Benign (981); Stroma (843),Controlled spatial grain
+SIM_prostate_l25_r2,Simulation,3000,33538,4558.0,3,3000,Benign (1208); Tumour (972); Stroma (820),Controlled spatial grain
+SIM_prostate_l25_r3,Simulation,3000,33538,4226.5,3,3000,Benign (1099); Tumour (1011); Stroma (890),Controlled spatial grain
+SIM_prostate_l40_r1,Simulation,3000,33538,4959.0,3,3000,Benign (1324); Tumour (1007); Stroma (669),Controlled spatial grain
+SIM_prostate_l40_r2,Simulation,3000,33538,3580.5,3,3000,Tumour (1143); Stroma (1116); Benign (741),Controlled spatial grain
+SIM_prostate_l40_r3,Simulation,3000,33538,4124.0,3,3000,Tumour (1271); Benign (1107); Stroma (622),Controlled spatial grain
+SIM_prostate_l65_r1,Simulation,3000,33538,4136.5,3,3000,Stroma (1144); Benign (1082); Tumour (774),Controlled spatial grain
+SIM_prostate_l65_r2,Simulation,3000,33538,3355.5,3,3000,Stroma (1243); Tumour (987); Benign (770),Controlled spatial grain
+SIM_prostate_l65_r3,Simulation,3000,33538,3521.5,3,3000,Tumour (1263); Stroma (1054); Benign (683),Controlled spatial grain

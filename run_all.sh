@@ -36,12 +36,15 @@ $PY scripts/08_run_methods.py --slides GSE175540 --k 6 --seeds 0                
 $PY scripts/08_run_methods.py --slides GSE175540 --k 10 --seeds 0
 $PY scripts/08_run_methods.py --slides GSE183456,GSE206306,GSE226533,Human_Kidney_10X,Human_Prostate_10X --k 6 --seeds 0
 $PY scripts/08_run_methods.py --slides SIM_ --seeds 0,1,2 --runs results/runs_sim
-$PY scripts/08_run_methods.py --slides GSE213688,Human_Breast_10X_06092021_Visium,Human_Breast_10X_06232020_Visium_Block_A_Section_1,WU2021_ \
+$PY scripts/08_run_methods.py --slides GSE213688,Human_Breast_10X_06092021_Visium,Human_Breast_10X_06232020_Visium_Block_A_Section_1 \
     --seeds 0,1,2 --runs results/runs_ext
+PY="$PY" bash scripts/70e_fix_wu_py.sh
 
 # ---- 4. R methods (BayesSpace, BANKSY, DR-SC, PRECAST, BASS): one job per line "section method K seed [runs_dir]" -------
 xargs -P 4 -L 1 Rscript scripts/15_run_r_methods.R < meta/r_jobs.txt
-# the same script runs the simulated, breast, unlabelled and K-sensitivity jobs (see the Methods of the article)
+for queue in "$REPO"/jobs/r_jobs_*.txt; do
+  xargs -P 4 -L 1 Rscript scripts/15_run_r_methods.R < "$queue"
+done
 
 # ---- 5. sensitivity analyses -----------------------------------------------------------------------------------------
 $PY scripts/33_dose_smooth.py 4                       # PCA-smooth: neighbour weight alpha x rings
@@ -49,7 +52,7 @@ $PY scripts/63_dose_generic.py Erickson,Maynard,GSE175540,GSE183456,GSE206306,GS
 $PY scripts/63_dose_generic.py SIM_ sim 4 1,2,3 0,1,2
 $PY scripts/63_dose_generic.py GSE213688,Human_Breast_10X_06092021_Visium,Human_Breast_10X_06232020_Visium_Block_A_Section_1,WU2021_ ext 3 1 0,1,2
 $PY scripts/35_stagate_radius.py --slides Erickson,Maynard --factors 2.1,3.1 --seeds 0,1,2
-# BANKSY lambda sweep: Rscript scripts/34_banksy_lambda.R <section> <K> 0 0.0,0.1,0.2,0.3,0.5,0.8 results/runs_dose
+xargs -P 4 -L 1 Rscript scripts/34_banksy_lambda.R < "$REPO/jobs/banksy_lambda_jobs.txt"
 $PY scripts/08_run_methods.py --runs results/runs_ksens --slides Erickson --seeds 0 --kdelta=-2,-1,1,2   # K sweep
 
 # ---- 6. scoring, statistics and tables -------------------------------------------------------------------------------

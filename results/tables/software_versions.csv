@@ -1,0 +1,35 @@
+language,package,version
+Python,python,3.10.22
+Python,scanpy,1.11.5
+Python,anndata,0.11.4
+Python,numpy,2.2.6
+Python,scipy,1.15.2
+Python,pandas,2.3.3
+Python,scikit-learn,1.7.2
+Python,statsmodels,0.15.0
+Python,torch,2.7.1
+Python,torch-geometric,2.8.1
+Python,igraph,0.11.9
+Python,leidenalg,0.10.2
+Python,SpaGCN,1.2.7
+Python,GraphST,1.1.1
+Python,SpaceFlow,1.0.4
+Python,matplotlib,3.10.9
+Python,networkx,3.4.2
+Python,STAGATE_pyG,source checkout (envs/src/STAGATE_pyG)
+Python,SEDR,source checkout (envs/src/SEDR)
+R,R,4.5.1
+R,BayesSpace,1.20.2
+R,Banksy,1.6.0
+R,DR.SC,3.7
+R,PRECAST,1.9
+R,BASS,1.1.0.17
+R,SPARK,1.1.1
+R,Seurat,5.5.0
+R,SingleCellExperiment,1.32.0
+R,SpatialExperiment,1.20.0
+R,mclust,6.1.2
+R,scater,1.38.1
+R,scran,1.38.1
+hardware,GPU,"NVIDIA GeForce RTX 3080 (driver 595.112.07, 20480 MiB)"
+hardware,CPU cores,4

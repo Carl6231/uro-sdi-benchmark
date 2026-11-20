@@ -1,0 +1,18 @@
+training: DLPFC + prostate classes n = 103
+                Coef. Std.Err.       z  P>|z|  [0.025  0.975]
+Intercept       0.265    0.066   4.019  0.000   0.136   0.395
+boundary_frac  -0.129    0.038  -3.360  0.001  -0.204  -0.054
+log10_n        -0.077    0.021  -3.670  0.000  -0.118  -0.036
+Group Var       0.001    0.011                               
+
+test: breast classes n = 69 in 20 sections
+sign agreement (predicted vs observed gain): 0.420
+Spearman predicted vs observed: rho = 0.397, P = 0.00072
+Spearman boundary share vs observed gain: rho = -0.246, P = 0.042
+
+model refitted on breast only:
+                Coef. Std.Err.       z  P>|z|  [0.025  0.975]
+Intercept       0.306    0.084   3.640  0.000   0.141   0.471
+boundary_frac  -0.246    0.056  -4.410  0.000  -0.355  -0.136
+log10_n        -0.097    0.027  -3.581  0.000  -0.151  -0.044
+Group Var       0.003    0.027                               

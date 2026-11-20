@@ -22,7 +22,7 @@ on
 
 The main question is not "which method is best" but *when* spatial smoothing helps: the gain of spatial methods over a
 non-spatial Gaussian mixture shrinks as the reference domains become smaller and more fragmented, and turns into a loss
-for patchy tumour structures. The repository contains everything needed to reproduce the numbers and figures.
+for patchy tumour structures.
 
 ## Repository layout
 
@@ -33,8 +33,9 @@ scripts/            analysis code (Python 3.10, R 4.5); numbered in the order th
   marker_programs.py  marker-gene programmes used for the label-free analysis
   fig_common.py       figure style and helpers
 environment/        conda environment, R package installation, software versions
-results/tables/     all tables behind the figures (CSV); results/AdditionalFile1_tables.xlsx = the supplementary tables
-figures/            Figures 1-11 (PNG and PDF)
+results/tables/     per-section and per-method summaries; results/AdditionalFile1_tables.xlsx contains the supplementary tables
+figures/            Figures 1-7 and 9-11 (PNG and PDF)
+jobs/               R job lists used for the supplementary runs and BANKSY parameter sweep
 run_all.sh          the complete analysis, step by step
 ```
 
@@ -84,6 +85,26 @@ bash run_all.sh
 | 9 | `80_fig9_markers.py` | label-free check with marker-gene programmes |
 | 10 | `57_fig7_robustness.py` | robustness (K, seeds, parameters, leave-one-out) |
 | 11 | `83_fig11_guide.py` | scorecard and practical guide |
+
+The November 20, 2026 server export includes [scores](results/), [supplementary tables](results/AdditionalFile1_tables.xlsx), and [ten rendered figures](figures/). All 18 GraphST runs on the six Wu 2021 sections have an `ok` score record (three seeds per section). The [Wu runner](scripts/70e_fix_wu_py.sh) starts a separate process for each section and method and retries unfinished GraphST seeds on CPU.
+
+Figure 8 is pending. At panel k, [the plotting script](scripts/82_fig8_external.py) looks up `GSE213688_GSM6592059` and `GSE213688_GSM6592061` in the geometry table. Both occur in the [dose table](results/dose/ext_dose.csv). [Table S2](results/tables/TableS2_sections.csv) marks them as excluded because fewer than two classes have 20 or more spots, so the [geometry table](results/tables/ext_geometry_slide.csv) has no rows for them.
+
+## External renal TLS pilot and cohort checks
+
+[External validation](external_validation/) contains spot-level predictions, scores from 27 clustering runs, counts of detected spots in each annotated TLS patch, and a secondary control that shuffles neighbours while preserving each spot's degree. The [maps](external_validation/zurich_tls_maps.png) show seed 0 for all three Zurich kidney tumour sections. The two cohort tables document which HTAN prostate sections carry annotations and which Meylan kidney sections qualify for TLS scoring.
+
+The cohort table script reads the HTAN workbook with pandas and openpyxl. To reproduce these files, put the source data under `external_validation/inputs/` in the locations below.
+
+- Place `KC1.h5ad`, `KC2.h5ad` and `KC3.h5ad` from the archive's `h5ad_preprocessed` directory in `zurich/`. [Zurich Visium data](https://zenodo.org/records/14620362)
+- Save the supplementary workbook containing Tables S3 and S12 as `HTAN_supp.xlsx`. [HTAN supplementary tables](https://pmc-oa-opendata.s3.amazonaws.com/PMC13531001.1/cd-26-0012_supplementary_tables_s1-s16_suppst1.xlsx)
+- Place the published per-sample `*tissue_positions_list.csv.gz` files and available `*TLS_annotation.csv.gz` files in `GSE175540/`. [Meylan Visium data](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE175540)
+
+```bash
+python external_validation/cohort_coverage.py
+python external_validation/zurich_tls_pilot.py
+python external_validation/zurich_tls_pilot.py --shuffle-control
+```
 
 ## Citation
 

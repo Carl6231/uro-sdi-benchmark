@@ -61,7 +61,7 @@ ax.set_xscale("log"); ax.set_xticks([0.6, 1, 2.5, 6.5]); ax.set_xticklabels(["0.
 ax.set_xlim(0.5, 7.5); ax.set_xlabel("Correlation length ℓ (spot spacings)"); ax.set_ylabel("Boundary share of labels")
 ax.legend(handles=ax.get_legend_handles_labels()[0] + [Line2D([], [], color=DCOL[d], lw=0.9, ls="--", label=f"{DNAME[d]} labels")
                                                       for d in ["DLPFC", "prostate", "breast"] if (R["dataset"] == d).any()],
-          loc="lower left", fontsize=4.4, handlelength=1.4)
+          loc="upper right", fontsize=4.4, handlelength=1.4)
 ax.set_title("d   Grain of the truth", loc="left")
 
 # e, f: ARI per method and grain (heatmaps)
@@ -126,10 +126,8 @@ ax.set_yticks(range(len(om))); ax.set_yticklabels([NAME.get(m, {"bass": "BASS", 
 ax.set_ylim(-0.6, len(om) - 0.4); ax.set_xlim(0, 1)
 for ds in ["DLPFC", "prostate"]:
     ax.axvline(R.loc[R["dataset"] == ds, "boundary_frac"].median(), color=DCOL[ds], lw=0.8, ls="--", zorder=1)
-ax.set_xlabel("Boundary share where the gain over GMM ends"); ax.set_title("h   Break-even grain", loc="left")
-ax.legend(handles=[Line2D([], [], marker="o", ls="", ms=3.4, mfc=INK2, mec=INK2, label="prostate profiles"),
-                   Line2D([], [], marker="o", ls="", ms=3.4, mfc=SURF, mec=INK2, label="DLPFC profiles")],
-          loc="upper left", fontsize=4.4, handletextpad=0.1, borderaxespad=0.2)
+ax.set_xlabel("Boundary share where the gain over GMM ends")
+ax.set_title("h   Break-even grain (●  prostate, ○  DLPFC profiles)", loc="left")
 
 # i: ranks at the finest vs coarsest grain
 ax = fig.add_subplot(gs[2, 9:12])
@@ -137,9 +135,9 @@ fine = G[G["ell"] == 0.6][ALLM].mean().rank(ascending=False); coarse = G[G["ell"
 for m in ALLM:
     c = COL.get(m, BLUE)
     ax.plot([0, 1], [fine[m], coarse[m]], color=c, lw=1.0 if m in ("gmm", "smooth") else 0.7, alpha=1 if m in ("gmm", "smooth") else 0.7)
-    ax.text(-0.06, fine[m], NAME.get(m, m.upper()), ha="right", va="center", fontsize=4.4, color=INK2)
-    ax.text(1.06, coarse[m], NAME.get(m, m.upper()), ha="left", va="center", fontsize=4.4, color=INK2)
-ax.set_ylim(len(ALLM) + 0.6, 0.4); ax.set_xlim(-0.05, 1.05); ax.set_xticks([0, 1]); ax.set_xticklabels(["ℓ 0.6", "ℓ 6.5"])
+    ax.text(-0.04, fine[m], NAME.get(m, m.upper()), ha="right", va="center", fontsize=4.4, color=INK2)
+    ax.text(1.04, coarse[m], NAME.get(m, m.upper()), ha="left", va="center", fontsize=4.4, color=INK2)
+ax.set_ylim(len(ALLM) + 0.6, 0.4); ax.set_xlim(-0.95, 1.95); ax.set_xticks([0, 1]); ax.set_xticklabels(["ℓ 0.6", "ℓ 6.5"])
 ax.set_yticks([]); [ax.spines[s_].set_visible(False) for s_ in ["left", "bottom"]]
 ax.set_title("i   Rank flips", loc="center")
 
@@ -175,7 +173,7 @@ if DS is not None:
     allv = pd.concat([b1.loc[G.index], b0.loc[[s for s in b0.index if s in LPs.index]]])
     r_ = spearmanr(allb, allv)
     ax.set_xlabel("Boundary share of the labels"); ax.set_ylabel("Best α (1 ring)")
-    ax.set_title(f"k   Best smoothing tracks grain (ρ = {r_[0]:.2f})", loc="left")
+    ax.set_title(f"k   Best α vs grain (ρ = {r_[0]:.2f})", loc="left")
     # l: neighbourhood size at full smoothing
     ax = fig.add_subplot(gs[3, 8:12]); gridy(ax); zero(ax)
     for ring, ls in [(1, "-"), (2, "--"), (3, ":")]:

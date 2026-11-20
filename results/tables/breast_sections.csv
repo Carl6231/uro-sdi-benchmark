@@ -1,0 +1,18 @@
+slide,n_spots,k,classes
+GSE213688_GSM6592049,1848,4.0,Tumor stroma with inflammation:853; Tumor cells:312; Adipose tissue:259; Tumor stroma fibrous:206
+GSE213688_GSM6592050,2417,2.0,Tumor Cells:1083; Tumor Stroma:717
+GSE213688_GSM6592051,1564,4.0,Fibrosis:321; Tumor cells:177; Adipose tissue:159; Tumor Stroma:59
+GSE213688_GSM6592052,2104,3.0,Tumour Cells:639; High TILs Stroma:529; Fibrosis:516
+GSE213688_GSM6592053,1731,2.0,Tumor cells:942; Tumor stroma with inflammation:251
+GSE213688_GSM6592054,1596,6.0,Fibrosis:807; Adipose tissue:242; Lymphocytes:156; Normal Epithelium:133; Vascular:28; Peripheral Nerve:24
+GSE213688_GSM6592055,1055,4.0,Lymphoid stroma:378; In situ Carcinoma*:220; Fibrous stroma:135; Adipose tissue:30
+GSE213688_GSM6592056,1258,4.0,Fibrosis:729; Adipose tissue:221; Normal Epithelium:87; Lymphocytes:27
+GSE213688_GSM6592057,370,2.0,Fibrosis:131; Normal Epithelium:36
+GSE213688_GSM6592058,1405,3.0,Fibrosis:619; Lymphocytes:344; In Situ Carcinoma:129; Normal Epithelium:15; Hyperplasia:11
+GSE213688_GSM6592059,2657,1.0,Tumor cells - Spindle Cells:1413
+GSE213688_GSM6592060,1295,3.0,Tumour cells:564; Fibrosis (peritumoral):205; Tumour Stroma:68; Endothelial:4
+GSE213688_GSM6592061,3037,1.0,Tumour Cells:2097; Endothelial:6
+GSE213688_GSM6592062,2700,3.0,Tumour cells:1492; Tumour Stroma:146; Necrosis:98; Endothelial:6
+Human_Breast_10X_06092021_Visium,2518,2.0,Non Tumor:1843; Tumor:675
+Human_Breast_10X_06232020_Visium_Block_A_Section_1,3798,4.0,Invasive:1663; Tumor:827; Surrounding tumor:823; Healthy:485
+Human_Breast_10X_06232020_Visium_Block_A_Section_2,3987,,(no annotation)
