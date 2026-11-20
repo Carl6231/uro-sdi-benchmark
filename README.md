@@ -37,6 +37,7 @@ environment/        conda environment, R package installation, software versions
 results/tables/     per-section and per-method summaries; results/AdditionalFile1_tables.xlsx holds Supplementary Tables
                     S1-S18 and results/AdditionalFile2_SupplementaryFigures.pdf Supplementary Figures S1-S12 with legends
 figures/            main Figures 1-6 (PNG and PDF); figures/supplementary/ holds Supplementary Figures S1-S12
+submission/         manuscript and cover letter (Word) and a checklist of the files to upload to the journal
 jobs/               R job lists used for the supplementary runs and BANKSY parameter sweep
 run_all.sh          the complete analysis, step by step
 ```
