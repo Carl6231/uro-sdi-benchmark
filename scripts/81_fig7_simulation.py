@@ -61,7 +61,8 @@ ax.set_xscale("log"); ax.set_xticks([0.6, 1, 2.5, 6.5]); ax.set_xticklabels(["0.
 ax.set_xlim(0.5, 7.5); ax.set_xlabel("Correlation length ℓ (spot spacings)"); ax.set_ylabel("Boundary share of labels")
 ax.legend(handles=ax.get_legend_handles_labels()[0] + [Line2D([], [], color=DCOL[d], lw=0.9, ls="--", label=f"{DNAME[d]} labels")
                                                       for d in ["DLPFC", "prostate", "breast"] if (R["dataset"] == d).any()],
-          loc="upper right", fontsize=4.4, handlelength=1.4)
+          loc="lower left", fontsize=4.3, handlelength=1.4, frameon=True, framealpha=0.92, edgecolor="none", borderaxespad=0.2)
+ax.set_ylim(0, 1.06)
 ax.set_title("d   Grain of the truth", loc="left")
 
 # e, f: ARI per method and grain (heatmaps)
@@ -85,7 +86,8 @@ for ds in ["DLPFC", "prostate", "breast"]:
         ax.scatter(g["boundary_frac"], g["gain"], s=13, color=DCOL[ds], edgecolor=SURF, lw=0.4, zorder=4, label=DNAME[ds])
 r_s = spearmanr(G["boundary_frac"], G["gain"]); r_r = spearmanr(R["boundary_frac"], R["gain"])
 ax.set_xlabel("Boundary share of the reference labels"); ax.set_ylabel("ARI, spatial (mean) − GMM")
-ax.legend(loc="lower left", fontsize=4.3, handletextpad=0.1, ncol=2, columnspacing=0.6)
+ax.set_ylim(-0.6, ax.get_ylim()[1])   # room for the legend below the points
+ax.legend(loc="lower left", fontsize=4.3, handletextpad=0.1, ncol=2, columnspacing=0.6, borderaxespad=0.2)
 ax.set_title(f"g   Simulated ρ = {r_s[0]:.2f}, real ρ = {r_r[0]:.2f}", loc="left")
 
 
@@ -127,7 +129,9 @@ ax.set_ylim(-0.6, len(om) - 0.4); ax.set_xlim(0, 1)
 for ds in ["DLPFC", "prostate"]:
     ax.axvline(R.loc[R["dataset"] == ds, "boundary_frac"].median(), color=DCOL[ds], lw=0.8, ls="--", zorder=1)
 ax.set_xlabel("Boundary share where the gain over GMM ends")
-ax.set_title("h   Break-even grain (●  prostate, ○  DLPFC profiles)", loc="left")
+ax.text(0.02, 0.98, "●  prostate profiles\n○  DLPFC profiles", transform=ax.transAxes, ha="left", va="top", fontsize=4.6,
+        color=INK2, bbox=dict(fc=SURF, ec="none", pad=0.8), zorder=6)
+ax.set_title("h   Break-even grain", loc="left")
 
 # i: ranks at the finest vs coarsest grain
 ax = fig.add_subplot(gs[2, 9:12])

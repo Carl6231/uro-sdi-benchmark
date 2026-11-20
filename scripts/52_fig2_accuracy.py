@@ -82,12 +82,12 @@ for ds in ["DLPFC", "prostate"]:
     ax.axvline(LP.loc[LP["dataset"] == ds, "label_pas"].mean(), color=DSCOL[ds], lw=0.8, ls="--", zorder=1)
 method_rows(ax, order, labels=False)
 ax.set_xlabel("PAS of the domains (dashed: labels)"); ax.set_title("j   Patchiness of the domains", loc="left")
-ax = fig.add_subplot(gs[3, 8:12]); row3.append(ax)
+ax = fig.add_subplot(gs[3, 9:12]); row3.append(ax)
 cf = CF[CF["dataset"] == "prostate"].copy()
 cf["grp"] = cf["cls"].map(lambda c: "Benign" if c.startswith("Benign") else ("Stroma" if c == "Stroma" else ("Tumour" if c.startswith("GG") else None)))
 G = cf.dropna(subset=["grp"]).groupby(["method", "grp", "slide"])["f1"].mean().groupby(["method", "grp"]).mean().unstack()
-heat(ax, G.loc[order, ["Benign", "Stroma", "Tumour"]].values, SEQ[:11], 0.2, 0.9, fmt="{:.2f}", fs=4.6, xt=["Benign", "Stroma", "Tumour"], yt=[])
-ax.xaxis.tick_top(); ax.tick_params(axis="x", labelsize=5.4)
+heat(ax, G.loc[order, ["Benign", "Stroma", "Tumour"]].values, SEQ[:11], 0.2, 0.9, fmt="{:.2f}", fs=4.6, xt=["Benign", "Stroma", "Tumour"], yt=[NAME[m] for m in order])
+ax.xaxis.tick_top(); ax.tick_params(axis="x", labelsize=5.4); ax.tick_params(axis="y", labelsize=5.0)
 ax.set_title("k   Prostate: F1 per class", loc="left", pad=3)
 
 # l: homogeneity vs completeness; m: accuracy vs patchiness; n: accuracy vs runtime

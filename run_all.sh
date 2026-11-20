@@ -79,4 +79,6 @@ for s in 51_fig1_overview 52_fig2_accuracy 53_fig3_transfer_maps 54_fig4_tls 55_
   $PY scripts/$s.py
 done
 $PY scripts/91_additional_file1.py                   # Additional file 1: all supplementary tables in one Excel workbook (needs openpyxl)
+# Additional file 2: Figure S1 from the external renal TLS pilot (run external_validation/zurich_tls_pilot.py first)
+$PY scripts/92_additional_file2.py external_validation/zurich_tls_maps.png "$URO_SDI_BASE/results/AdditionalFile2_FigureS1.pdf"
 echo "done: figures in $URO_SDI_BASE/results/figures_full, tables in $URO_SDI_BASE/results"

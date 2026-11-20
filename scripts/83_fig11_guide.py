@@ -254,8 +254,7 @@ ax.set_title("g   Cost vs accuracy", loc="left")
 
 # ---------------- h: decision guide ----------------
 ax = fig.add_subplot(gs[4, :]); ax.axis("off"); ax.set_xlim(0, 1); ax.set_ylim(0, 1)
-coarse_score = Z.loc[SPM, ["DLPFC\nARI", "Simulated\ncoarse grain"]].mean(1).sort_values(ascending=False)
-top_coarse = [NAME[m] for m in coarse_score.index[:3]]
+top_coarse = [NAME[m] for m in order if m in SPM][:3]   # best spatial methods by mean rank (panel b)
 b100, b500, b2000 = [float(BE.loc[BE["n_spots"] == n, "break_even"].iloc[0]) for n in (100, 500, 2000)]
 a_p = best_alpha.get("≥ 0.4", 0.0)
 patchy = (f"Use GMM on PCs, or smooth\nlightly (α ≈ {a_p:g}, 1 ring)" if a_p > 0 else "Use GMM on PCs;\navoid neighbour smoothing")
@@ -263,8 +262,8 @@ boxes = [
     (0.006, 0.2, 0.164, 0.66, "1  Size up the target", "Typical domain size\n(spots) and boundary\nshare, from histology\nor prior work", "#f3f2ee"),
     (0.215, 0.2, 0.2, 0.66, "2  Locate it in d",
      f"Break-even boundary share\n≈ {b100:.2f} at 100 spots,\n{b500:.2f} at 500 spots,\n{b2000:.2f} at 2,000 spots", "#f3f2ee"),
-    (0.46, 0.53, 0.27, 0.44, "Below the line: large, compact", f"Use a spatial method,\ne.g. {', '.join(top_coarse)}", SEQ[1]),
-    (0.46, 0.02, 0.27, 0.44, "Above the line: small, patchy", patchy, "#fde3cf"),
+    (0.46, 0.53, 0.27, 0.44, "Below the line: compact", f"Use a spatial method,\ne.g. {', '.join(top_coarse)}", SEQ[1]),
+    (0.46, 0.02, 0.27, 0.44, "Above the line: patchy or large", patchy, "#fde3cf"),
     (0.775, 0.2, 0.215, 0.66, "3  Check without labels",
      "Marker-programme η² (held-\nout genes) vs GMM: a drop\nflags over-smoothing (Fig. 9).\nReport K and seed effects", "#f3f2ee")]
 for x, y, wd, ht, hd, tx, fc in boxes:

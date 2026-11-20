@@ -88,14 +88,15 @@ ax = fig.add_subplot(gs[3, 3:8])
 cols_k = F.loc["gmm"].sort_values(ascending=False).index
 heat(ax, F.loc[order, cols_k].values, SEQ[:11], 0, 0.8, fmt="{:.2f}", fs=3.9, xt=[short(s)[-4:] for s in cols_k], yt=[])
 ax.tick_params(axis="x", rotation=90, labelsize=4.8)
-ax.set_title("k   TLS F1 per section (GSM id, last 4 digits)", loc="left")
+ax.set_xlabel("Section (last 4 digits of the GSM id)")
+ax.set_title("k   TLS F1 per section (rows as in j)", loc="left")
 ax = fig.add_subplot(gs[3, 9:12]); ax.grid(color=GRID, lw=0.5); ax.set_axisbelow(True); zero(ax)
 gain = F.loc[[m for m in SP9 if m in F.index]].mean() - F.loc["gmm"]
 bfr = ntls.loc[gain.index, "boundary_frac"]
 ax.scatter(bfr, gain, s=13, color=VIOLET, edgecolor=SURF, lw=0.5, zorder=3)
 r_ = spearmanr(bfr, gain)
 ax.set_xlabel("TLS boundary share"); ax.set_ylabel(f"ΔF1 vs GMM (mean of {NSP})")
-ax.set_title(f"l   Gain vs TLS shape (ρ = {r_[0]:.2f})", loc="left")
+ax.set_title(f"l   Gain vs grain (ρ = {r_[0]:.2f})", loc="left")
 
 # m: F1 vs TLS prevalence; n: TLS geometry; o: smoothing dose
 ax = fig.add_subplot(gs[4, 0:4]); ax.grid(color=GRID, lw=0.5); ax.set_axisbelow(True)
