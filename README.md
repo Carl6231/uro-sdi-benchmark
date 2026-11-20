@@ -91,6 +91,20 @@ The November 20, 2026 server export includes [scores](results/), [supplementary 
 
 Figure 8 uses the 20 breast sections of the external test. Its smoothing-dose panels skip `GSE213688_GSM6592059` and `GSE213688_GSM6592061`, which [Table S2](results/tables/TableS2_sections.csv) excludes because fewer than two classes have 20 or more spots.
 
+## What smoothing corrects and what it costs at a boundary
+
+For 39 labelled sections, we followed each pair of neighbouring spots from no smoothing to one-ring PCA-smooth at neighbour weights of 0.3 and 0.7. We compared the same random seed, counted each undirected pair once and used only pairs with reference labels at both ends. A within-label error splits two neighbours that share a reference label. A boundary error joins neighbours with different reference labels. For each pair type, the error rate after smoothing equals the initial rate minus the fraction corrected plus the fraction newly in error. Each rate uses the full set of eligible pairs of that type.
+
+In the seven sections from one prostatectomy, a weight of 0.3 corrected 6.70% of within-label pairs and introduced errors in 2.24%. At reference boundaries, smoothing corrected 3.30% of pairs and introduced errors in 17.45%. The split rate fell in all seven sections and the boundary merge rate rose in all seven. Each rate averages seeds within a section and sections within a donor. The DLPFC estimates give three donors equal weight. The breast estimates give 20 sections equal weight because the analysis lacks a verified patient key spanning the three breast sources. [Figure S2](results/AdditionalFile3_FigureS2.pdf) · [Tables S16 to S18](results/AdditionalFile1_tables.xlsx) · [Editable manuscript passage and legend](results/boundary/Manuscript_insert_Figure_S2.docx)
+
+The [transition counts](results/boundary/paired_edges.csv) retain the original label pair, section, seed and weight, including pairs correct or incorrect at both weights. The [cohort](results/boundary/paired_cohorts.csv), [section](results/boundary/paired_sections.csv) and [prostate label-pair](results/boundary/prostate_label_pairs.csv) tables use rates between 0 and 1. The edge totals in the summaries count each physical pair once per section and comparison. Rates are averaged as described above. The [marginal error tables](results/boundary/) also contain the original 13-method comparison and the dose series.
+
+With a clone of the published result files, the following command rebuilds Figure S2 and its tables. On the original benchmark inputs, `run_all.sh` also reconstructs the spot assignments and checks the paired counts against the baseline and smoothed error totals for every section and seed.
+
+```bash
+python scripts/95_paired_summary.py results/boundary
+```
+
 ## External renal TLS pilot and cohort checks
 
 [External validation](external_validation/) contains spot-level predictions, scores from 27 clustering runs, counts of detected spots in each annotated TLS patch, and a secondary control that shuffles neighbours while preserving each spot's degree. The [maps](external_validation/zurich_tls_maps.png) show seed 0 for all three Zurich kidney tumour sections. The two cohort tables document which HTAN prostate sections carry annotations and which Meylan kidney sections qualify for TLS scoring.
@@ -106,6 +120,8 @@ python external_validation/cohort_coverage.py
 python external_validation/zurich_tls_pilot.py
 python external_validation/zurich_tls_pilot.py --shuffle-control
 ```
+
+The [independent prostate validation plan](external_validation/prostate_validation.md) and [Zurich H&E reader instructions](external_validation/tls_reader_instructions_zh.md) describe follow-up studies.
 
 ## Citation
 

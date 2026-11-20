@@ -75,11 +75,27 @@ for f, nm, tt in [("sim_summary.csv", "S10_simulation", "Table S10. Simulation: 
             d = d.rename(columns={d.columns[0]: "method"})
         sheets.append((nm, tt, mname(d).round(5)))
 
+paired_tables = [
+    ("S16_paired_cohorts", "paired_cohorts", "Table S16. Paired edge changes by cohort. Rates use all eligible pairs of each reference type"),
+    ("S17_paired_sections", "paired_sections", "Table S17. Paired edge changes per section, averaged over three matched seeds"),
+    ("S18_prostate_pairs", "prostate_label_pairs", "Table S18. Paired edge changes by original prostate pathology labels, averaged over sections containing that pair"),
+]
+edge_rates = ["corrected_rate", "introduced_rate", "error_rate_before", "error_rate_after", "net_error_change"]
+for name, file, title in paired_tables:
+    path = os.path.join(BASE, "results/boundary", file + ".csv")
+    if os.path.exists(path):
+        data = pd.read_csv(path)
+        sheets.append((name, title, data))
+
 out = os.path.join(BASE, "results/AdditionalFile1_tables.xlsx")
 with pd.ExcelWriter(out, engine="openpyxl") as xw:
     idx = pd.DataFrame([(n, t.split(". ", 1)[1] if ". " in t else t) for n, t, d in sheets if d is not None], columns=["sheet", "content"])
     idx.to_excel(xw, sheet_name="Contents", index=False, startrow=2)
-    xw.sheets["Contents"]["A1"] = "Additional file 1 - supplementary tables"; xw.sheets["Contents"]["A1"].font = Font(bold=True, size=12)
+    contents = xw.sheets["Contents"]
+    contents["A1"] = "Additional file 1 - supplementary tables"
+    contents["A1"].font = Font(bold=True, size=12)
+    contents.column_dimensions["A"].width = 24
+    contents.column_dimensions["B"].width = 110
     for n, t, d in sheets:
         if d is None:
             continue
@@ -91,6 +107,9 @@ with pd.ExcelWriter(out, engine="openpyxl") as xw:
         for j, col in enumerate(d.columns, 1):
             w = max([len(str(col))] + [len(str(v)) for v in d[col].astype(str).head(200)])
             ws.column_dimensions[get_column_letter(j)].width = min(max(10, w + 2), 60)
+            if col in edge_rates:
+                for row in range(4, len(d) + 4):
+                    ws.cell(row, j).number_format = "0.00%"
         ws.freeze_panes = "A4"
 for n, t, d in sheets:
     print(f"{n:22s} {'missing' if d is None else d.shape}")
