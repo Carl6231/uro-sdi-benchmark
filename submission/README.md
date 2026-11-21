@@ -1,6 +1,6 @@
 # 投稿材料（BMC Bioinformatics）/ Submission package
 
-这个文件夹保存 2026-11-20 的正文和投稿信归档副本。作者信息已在投稿用的本地副本中填写。图和附加文件的位置见下表。
+这个文件夹保存 2026-11-21 的投稿用正文和 2026-11-20 的投稿信归档副本。图和附加文件的位置见下表。
 
 ## 在另一台电脑上怎么拿到这些文件
 
@@ -20,12 +20,12 @@
 
 ## 归档副本与投稿副本
 
-- 仓库内两份 Word 保留原归档内容。本地投稿副本已填写作者姓名、单位、通讯作者邮箱、作者贡献及投稿信署名。
+- 仓库内的正文与 AutoSubmit 的本地投稿用正文一致，已填写作者、单位、通讯邮箱和作者贡献。已署名的投稿信保存在本地投稿包中。
 - 2026-11-21 的本地投稿副本使用公开 GitHub 仓库链接作为代码及结果的访问地址。
 
 ## 说明
 
-- `Manuscript.docx` 是 2026-11-20 的定稿，按 BMC 的要求排版：Times New Roman 12 号字、双倍行距、连续行号、页码。
+- `Manuscript.docx` 是 2026-11-21 的投稿用正文，按 BMC 的要求排版：Times New Roman 12 号字、双倍行距、连续行号、页码。
 - 摘要 350 词（BMC 上限）；参考文献 75 篇，每一篇都对照 Crossref、PubMed、DataCite、arXiv 或出版方页面核对过，能查到 DOI 的都附上了。
 - 方法部分的 "Use of large language models" 一节是出版社 Springer Nature 的要求，请保留。
 - 在线可编辑版本（Claude 文档）：正文 https://claude.ai/artifact/9BxEnhNSfHETD484tENs1f ，投稿信 https://claude.ai/artifact/U5fGYaRDh7JLLtRa1NY6q8 。
